@@ -125,7 +125,7 @@ function App() {
                   )}
                   {authState.status &&
                     <NavDropdown title="Profile" id="dropdown" className="link" >
-                      <Nav.Link><Link onClick={() => window.location.replace(`https://swapandmeet.herokuapp.com/profile/${authState.id}`)} className='dropdown-item' to={`/profile/${authState.id}`}>{authState.username}</Link></Nav.Link>
+                      <Nav.Link><Link onClick={() => window.location.replace(`https://main--lucky-cucurucho-74f5e7.netlify.app/profile/${authState.id}`)} className='dropdown-item' to={`/profile/${authState.id}`}>{authState.username}</Link></Nav.Link>
                       <Nav.Link><Link className='dropdown-item' to={`/cart/${authState.id}`}>Cart</Link></Nav.Link>
                       <Nav.Link><button className="btn btn-outline-primary" onClick={logout}>Logout</button></Nav.Link>
                     </NavDropdown>}
