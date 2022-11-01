@@ -23,20 +23,20 @@ const Profile = ({ logout }) => {
   const { authState, setAuthState } = useContext(AuthContext);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/auth/basicinfo/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
       setImage(response.data.image);
     });
 
-    axios.get(`http://localhost:3001/api/categories/byuserId/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/categories/byuserId/${id}`).then((response) => {
       setUserCategories(response.data);
     });
 
-    axios.get(`http://localhost:3001/api/products/productbyuserId/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/products/productbyuserId/${id}`).then((response) => {
       setUserProducts(response.data);
     });
 
-    axios.get("http://localhost:3001/api/categories").then((response) => {
+    axios.get("https://swapandmeet.herokuapp.com/api/categories").then((response) => {
       setAllCategories(response.data);
     });
   }, []);
@@ -47,7 +47,7 @@ const Profile = ({ logout }) => {
     let pid = userProducts.map((value, i) => value.id);
     let cid = userCategories.map((value, i) => value.id);
     axios
-      .put("http://localhost:3001/api/auth/changeusername", {
+      .put("https://swapandmeet.herokuapp.com/api/auth/changeusername", {
         newUsername: newUsername,
         uid: uid,
         pid: pid,
@@ -76,7 +76,7 @@ const Profile = ({ logout }) => {
 
   const addToCart = (pid) => {
     axios
-      .post('http://localhost:3001/api/products/addtocart',
+      .post('https://swapandmeet.herokuapp.com/api/products/addtocart',
         {
           pid:pid
         },
@@ -97,7 +97,7 @@ const Profile = ({ logout }) => {
         {authState.id == id &&
           <button onClick={() => editUsername(authState.username)}  > update name</button>
         }
-        <img className="yellowDotBorder m-3 p-2 bg-white" src={`http://localhost:3001/public/image-${image}`} style={styles.width} alt=" " />
+        <img className="yellowDotBorder m-3 p-2 bg-white" src={`https://swapandmeet.herokuapp.com/public/image-${image}`} style={styles.width} alt=" " />
       </div>
 
       <div className="mb-3" >
@@ -133,7 +133,7 @@ const Profile = ({ logout }) => {
                         <Card.Img
                           className="p-1 "
                           variant="top"
-                          src={`http://localhost:3001/public/image-${product.image}`} />
+                          src={`https://swapandmeet.herokuapp.com/public/image-${product.image}`} />
                         <Card.Title>{product.product_name}</Card.Title>
                         <ListGroup className="list-group-flush " key={value.id + 500}>
                           <ListGroup.Item className="" key={value.id + 600}>Price: {product.price} </ListGroup.Item>

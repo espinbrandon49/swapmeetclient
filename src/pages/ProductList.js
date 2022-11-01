@@ -17,19 +17,19 @@ const ProductList = ({ singleCategory }) => {
   const [shoppingCart, setShoppingCart] = useState({})
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/categories").then((response) => {
+    axios.get("https://swapandmeet.herokuapp.com/api/categories").then((response) => {
       setAllCategories(response.data);
     })
 
-    axios.get(`http://localhost:3001/api/products/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/products/${id}`).then((response) => {
       setProducts(response.data);
     });
 
-    axios.get(`http://localhost:3001/api/tags`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/tags`).then((response) => {
       setTags(response.data);
     });
 
-    axios.get(`http://localhost:3001/api/cart/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/cart/${id}`).then((response) => {
       setShoppingCart(response.data)
     });
   }, []);
@@ -64,7 +64,7 @@ const ProductList = ({ singleCategory }) => {
   const onSubmit = (data, { resetForm }) => {
     sendImage()
     axios
-      .post("http://localhost:3001/api/products", // data,
+      .post("https://swapandmeet.herokuapp.com/api/products", // data,
         {
           image: image.name.replace(/\s/g, '').toLowerCase(),
           product_name: data.product_name,
@@ -102,7 +102,7 @@ const ProductList = ({ singleCategory }) => {
     let formData = new FormData()
     formData.append('image', image)
     axios
-      .post("http://localhost:3001/api/products/upload", formData, {})
+      .post("https://swapandmeet.herokuapp.com/api/products/upload", formData, {})
       .then((response) => {
         console.log(response)
       })
@@ -110,7 +110,7 @@ const ProductList = ({ singleCategory }) => {
 
   const deleteProduct = (id) => {
     axios
-      .delete(`http://localhost:3001/api/products/${id}`, {
+      .delete(`https://swapandmeet.herokuapp.com/api/products/${id}`, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
@@ -127,7 +127,7 @@ const ProductList = ({ singleCategory }) => {
     if (field === "product_name") {
       let newProductName = prompt('Enter new product name', defaultValue);
       axios
-        .put("http://localhost:3001/api/products/productName", {
+        .put("https://swapandmeet.herokuapp.com/api/products/productName", {
           newProductName: newProductName,
           id: pid
         },
@@ -139,7 +139,7 @@ const ProductList = ({ singleCategory }) => {
     } else if (field === "price") {
       let newProductPrice = prompt('Enter new price', defaultValue);
       axios
-        .put("http://localhost:3001/api/products/productPrice", {
+        .put("https://swapandmeet.herokuapp.com/api/products/productPrice", {
           newProductPrice: newProductPrice,
           id: pid
         },
@@ -153,7 +153,7 @@ const ProductList = ({ singleCategory }) => {
     } else {
       let newStock = prompt('Enter new stock count', defaultValue);
       axios
-        .put("http://localhost:3001/api/products/stock", {
+        .put("https://swapandmeet.herokuapp.com/api/products/stock", {
           newStock: newStock,
           id: pid
         },
@@ -168,7 +168,7 @@ const ProductList = ({ singleCategory }) => {
   //PRODUCT ROUTES
   const addToCart = (pid) => {
     axios
-      .post('http://localhost:3001/api/products/addtocart',
+      .post('https://swapandmeet.herokuapp.com/api/products/addtocart',
         {
           pid:pid
         },
@@ -187,7 +187,7 @@ const ProductList = ({ singleCategory }) => {
           return (
             <Card key={key} style={{ width: '12rem' }} className="m-3 openSans border border-secondary " >
 
-              <Card.Img className="p-1" variant="top" src={`http://localhost:3001/public/image-${value.image}`} alt={`product that is a ${value.product}`} />
+              <Card.Img className="p-1" variant="top" src={`https://swapandmeet.herokuapp.com/public/image-${value.image}`} alt={`product that is a ${value.product}`} />
 
               <Card.Body
                 className="productName d-flex justify-content-between align-items-center"

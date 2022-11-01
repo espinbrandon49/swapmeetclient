@@ -19,7 +19,7 @@ const Home = () => {
     if (!localStorage.getItem('accessToken')) {
       navigate('/login')
     } else {
-      axios.get('http://localhost:3001/api/categories').then((response) => {
+      axios.get('https://swapandmeet.herokuapp.com/api/categories').then((response) => {
         setCategories(response.data)
       })
       navigate('/')

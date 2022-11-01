@@ -24,7 +24,7 @@ const AddTag = () => {
   })
 
   const onSubmit = (data, {resetForm}) => {
-    axios.post('http://localhost:3001/api/tags', data).then((response) => {
+    axios.post('https://swapandmeet.herokuapp.com/api/tags', data).then((response) => {
       resetForm()
       setTagAdded({status: true, tag: data.tag_name})
       navigate('/')

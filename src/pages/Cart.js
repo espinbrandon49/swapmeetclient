@@ -14,14 +14,14 @@ const Cart = () => {
   let { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/cart/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/cart/${id}`).then((response) => {
       if (response.data.id > 0) {
         setCart(true)
         setShoppingCart(response.data)  
       }
     });
 
-    axios.get(`http://localhost:3001/api/auth/basicinfo/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);
     });
   }, [setCart]);
@@ -41,7 +41,7 @@ const Cart = () => {
   }
 
   const createCart = () => {
-    axios.post('http://localhost:3001/api/cart/createCart',
+    axios.post('https://swapandmeet.herokuapp.com/api/cart/createCart',
       {},
       {
         headers: { accessToken: localStorage.getItem("accessToken") },
@@ -53,7 +53,7 @@ const Cart = () => {
   }
 
   const removeFromCart = (event) => {
-    axios.post("http://localhost:3001/api/products/removefromcart",
+    axios.post("https://swapandmeet.herokuapp.com/api/products/removefromcart",
       {
         pid: event.target.value.split(',')[1],
         cid: event.target.value.split(',')[0]
@@ -89,7 +89,7 @@ const Cart = () => {
                       <Card.Img
                         className="p-1 "
                         variant="top"
-                        src={`http://localhost:3001/public/image-${value.image}`}
+                        src={`https://swapandmeet.herokuapp.com/public/image-${value.image}`}
                       />
                       <Card.Title
                         className="text-center"

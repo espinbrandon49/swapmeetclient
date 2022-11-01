@@ -26,7 +26,7 @@ const Registration = () => {
   const onSubmit = (data) => {
     sendImage()
 
-    axios.post("http://localhost:3001/api/auth", //data
+    axios.post("https://swapandmeet.herokuapp.com/api/auth", //data
       {
         username: data.username,
         password: data.password,
@@ -48,7 +48,7 @@ const Registration = () => {
     let formData = new FormData()
     formData.append('image', image)
     axios
-      .post("http://localhost:3001/api/products/upload", formData, {})
+      .post("https://swapandmeet.herokuapp.com/api/products/upload", formData, {})
       .then((response) => {
         console.log(response)
       })
@@ -56,7 +56,7 @@ const Registration = () => {
 
   function login(data1, data2) {
     const data = { username: data1, password: data2 };
-    axios.post("http://localhost:3001/api/auth/login", data).then((response) => {
+    axios.post("https://swapandmeet.herokuapp.com/api/auth/login", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {

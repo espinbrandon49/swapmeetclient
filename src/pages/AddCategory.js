@@ -25,7 +25,7 @@ const AddCategory = () => {
   })
 
   const onSubmit = (data, { resetForm }) => {
-    axios.post('http://localhost:3001/api/categories',
+    axios.post('https://swapandmeet.herokuapp.com/api/categories',
       {
         category_name: data.category_name,
         username: authState.username
@@ -34,7 +34,7 @@ const AddCategory = () => {
         headers: { accessToken: localStorage.getItem("accessToken") },
       }).then((response) => {
         resetForm()
-        window.location.replace('http://localhost:3000/')
+        window.location.replace('https://swapandmeet.herokuapp.com/')
       });
   };
 

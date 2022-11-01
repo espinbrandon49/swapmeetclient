@@ -11,7 +11,7 @@ const Category = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/api/categories/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/categories/${id}`).then((response) => {
       setSingleCategory(response.data);
     });
   }, []);
@@ -21,7 +21,7 @@ const Category = () => {
       alert("Cannot Delete Categories With Products")
     } else {
       axios
-        .delete(`http://localhost:3001/api/categories/${id}`, {
+        .delete(`https://swapandmeet.herokuapp.com/api/categories/${id}`, {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then(() => {
@@ -34,7 +34,7 @@ const Category = () => {
     let newCategoryName = prompt('Enter new category name', defaultValue);
     let pid = singleCategory.products.map((value, i) => value.id)
     axios
-      .put("http://localhost:3001/api/categories/categoryName", {
+      .put("https://swapandmeet.herokuapp.com/api/categories/categoryName", {
         newCategoryName: newCategoryName,
         id: id,
         pid: pid

@@ -15,15 +15,15 @@ const AddProduct = () => {
   const [allCategories, setAllCategories] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/api/categories").then((response) => {
+    axios.get("https://swapandmeet.herokuapp.com/api/categories").then((response) => {
       setAllCategories(response.data);
     })
 
-    axios.get(`http://localhost:3001/api/products/${id}`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/products/${id}`).then((response) => {
       setProducts(response.data);
     });
 
-    axios.get(`http://localhost:3001/api/tags`).then((response) => {
+    axios.get(`https://swapandmeet.herokuapp.com/api/tags`).then((response) => {
       setTags(response.data);
     });
   }, []);
@@ -50,7 +50,7 @@ const AddProduct = () => {
   const onSubmit = (data, { resetForm }) => {
     sendImage()
     axios
-      .post("http://localhost:3001/api/products", // data,
+      .post("https://swapandmeet.herokuapp.com/api/products", // data,
         {
           image: image.name.replace(/\s/g, '').toLowerCase(),
           product_name: data.product_name,
@@ -88,7 +88,7 @@ const AddProduct = () => {
     let formData = new FormData()
     formData.append('image', image)
     axios
-      .post("http://localhost:3001/api/products/upload", formData, {})
+      .post("https://swapandmeet.herokuapp.com/api/products/upload", formData, {})
       .then((response) => {
         console.log(response)
       })
