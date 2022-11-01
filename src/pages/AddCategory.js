@@ -34,7 +34,7 @@ const AddCategory = () => {
         headers: { accessToken: localStorage.getItem("accessToken") },
       }).then((response) => {
         resetForm()
-        window.location.replace('https://swapandmeet.herokuapp.com/')
+        window.location.replace('https://main--lucky-cucurucho-74f5e7.netlify.app/')
       });
   };
 
